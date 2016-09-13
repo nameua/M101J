@@ -5,9 +5,7 @@ import freemarker.template.Template;
 import spark.Spark;
 
 import java.io.StringWriter;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by tslepkan on 9/12/16
@@ -19,13 +17,18 @@ public class SparkFromHandling {
         StringWriter writer = new StringWriter();
         try {
             Template fruitTemplate = configuration.getTemplate("fruitPicker.ftl");
-            Map<String, Object> fruitsMap = new HashMap<String, Object>();
+            Map<String, Object> fruitsMap = new HashMap<>();
+
+//            List<String> value = new ArrayList<String>() {{ add("apple");}};
+//            fruitsMap.put("fruits", value);
             fruitsMap.put("fruits", Arrays.asList("apple","banana","orange","peach"));
+            fruitsMap.put("fruit", "apple");
             fruitTemplate.process(fruitsMap, writer);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         Spark.get("/test", (req, res) -> "This is a test page");
-        Spark.post("/", (req, res) -> writer);
+        Spark.get("/", (req, res) -> writer);
     }
 }
