@@ -30,6 +30,5 @@ public class HelloWorldSparkFreemarkerStyle {
         Spark.get("/", (req, res) -> writer);
 
         Spark.get("/test", (req, res) -> "This is a test page");
-
     }
 }
