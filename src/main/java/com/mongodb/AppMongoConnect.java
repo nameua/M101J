@@ -9,8 +9,8 @@ import org.bson.Document;
  */
 public class AppMongoConnect {
     public static void main(String[] args) {
-        MongoClientOptions options = MongoClientOptions.builder().connectionsPerHost(100).build();
 //        MongoClient client = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+        MongoClientOptions options = MongoClientOptions.builder().connectionsPerHost(100).build();
         MongoClient client = new MongoClient(new ServerAddress(), options);
 
         MongoDatabase db = client.getDatabase("test").withReadPreference(ReadPreference.secondary());

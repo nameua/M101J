@@ -6,7 +6,7 @@ import spark.Spark;
  * Hello world!
  *
  */
-public class App 
+public class AppSparkTest
 {
     public static void main( String[] args )
     {
